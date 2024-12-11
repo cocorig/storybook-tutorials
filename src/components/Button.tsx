@@ -24,7 +24,7 @@ const StyledButton = styled.button<{
   size: "sm" | "md" | "lg";
   backgroundColor?: string;
 }>`
-  ${centerContent("")}
+  ${centerContent("inline")};
   outline: none;
   border: none;
   cursor: pointer;
