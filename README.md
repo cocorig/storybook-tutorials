@@ -263,6 +263,65 @@ npm install --save-dev @storybook/manager-api @storybook/theming
 
 ## 2. Design Systems for Developers
 
+### 글로벌 스타일 추가
+
+여기선 `emotion` 사용
+
+```tsx
+import { Global, css } from "@emotion/react";
+import { reset } from "./reset";
+
+const baseStyle = css`
+  ${reset}
+`;
+
+const GlobalStyle = () => <Global styles={baseStyle} />;
+
+export default GlobalStyle;
+```
+
+GlobalStyle을 가져와 preview파일에 import한다.
+모든 컴포넌트에 적용할 수 있도록 데코레이터 활용해 적용한다.
+
+```tsx
+const preview: Preview = {
+  //..
+
+  decorators: [
+    (Story) => (
+      <>
+        <GlobalStyle />
+        <Story />
+      </>
+    ),
+  ],
+};
+
+export default preview;
+```
+
+### 폰트 태그 추가
+
+스토리북에서 설정하는 쉬운 방법으로 `.storybook/preview-head-html` 파일을 생성해 직접 link 태그를 추가하는 방법이다.
+
+### 애드온 인터렉션(interaction)
+
+### 단위 테스트
+
+단위 테스트는 입력이 주어졌을 때 특정 기능이 올바른 출력을 갖는지 확인한다.
+
+####
+
+#### Testing Library로 테스트 작성하기
+
+- [testing-library DOCS](https://testing-library.com/)
+
+```bash
+ npm i @testing-library/react
+```
+
+#### 접근성 테스트
+
 ## 3. UI Testing Handbook
 
 ## 4. Visual Testing Handbook
