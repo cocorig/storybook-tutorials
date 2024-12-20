@@ -1,14 +1,13 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { fn, userEvent, within } from "@storybook/test";
-import { action } from "@storybook/addon-actions";
+import { userEvent, within } from "@storybook/test";
 import { Button } from ".";
 import React from "react";
 import { StoryLinkWrapper } from "../StoryLinkWrapper";
+import { Icon } from "../Icon";
 const meta = {
   title: "Components/Button",
   component: Button,
   parameters: {
-    // Optional parameter to center the component in the Canvas. More info: https://storybook.js.org/docs/configure/story-layout
     layout: "centered",
   },
   argTypes: {
@@ -67,3 +66,58 @@ WithInteractions.play = async ({ canvasElement }) => {
 };
 
 WithInteractions.storyName = "button with interactions";
+export const AllButtons = {
+  name: "all buttons",
+  render: () => (
+    <div style={{ display: "flex", flexWrap: "wrap", gap: "10px" }}>
+      <Button appearance="primary">Primary</Button>
+      <Button appearance="secondary">Secondary</Button>
+      <Button appearance="tertiary">Tertiary</Button>
+      <Button appearance="outline">Outline</Button>
+      <Button appearance="primaryOutline">Outline primary</Button>
+      <Button appearance="secondaryOutline">Outline secondary</Button>
+      <Button appearance="primary" isDisabled>
+        Disabled
+      </Button>
+      <br />
+      <Button appearance="primary" isLoading>
+        Primary
+      </Button>
+      <Button appearance="secondary" isLoading>
+        Secondary
+      </Button>
+      <Button appearance="tertiary" isLoading>
+        Tertiary
+      </Button>
+      <Button appearance="outline" isLoading>
+        Outline
+      </Button>
+      <Button appearance="outline" isLoading loadingText="Custom...">
+        Outline
+      </Button>
+      <br />
+      <Button appearance="primary" size="small">
+        Primary
+      </Button>
+      <Button appearance="secondary" size="small">
+        Secondary
+      </Button>
+      <Button appearance="tertiary" size="small">
+        Tertiary
+      </Button>
+      <Button appearance="outline" size="small">
+        Outline
+      </Button>
+      <Button appearance="primary" isDisabled size="small">
+        Disabled
+      </Button>
+      <Button appearance="outline" size="small" containsIcon>
+        <Icon icon="link" aria-label="Link" />
+      </Button>
+      <Button appearance="outline" size="small">
+        <Icon icon="link" />
+        Link
+      </Button>
+    </div>
+  ),
+};

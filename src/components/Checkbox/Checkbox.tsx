@@ -30,7 +30,9 @@ export const Checkbox = ({
           {checked && <Icon icon="check" />}
         </Box>
       </CheckboxLabel>
-      {children && <Text>{children}</Text>}
+      {children && (
+        <Text data-state={checked ? "checked" : "unchecked"}>{children}</Text>
+      )}
     </>
   );
 };
@@ -80,6 +82,11 @@ const Text = styled.label`
   overflow-wrap: break-word;
   white-space: nowrap;
   text-overflow: ellipsis;
+
+  &[data-state="checked"] {
+    color: #4a5568;
+    text-decoration: line-through;
+  }
 `;
 const inputStyle = css`
   border: 0;

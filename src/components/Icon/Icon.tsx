@@ -5,6 +5,8 @@ const Svg = styled.svg<{ block?: boolean }>`
   vertical-align: middle;
   shape-rendering: inherit;
   transform: translate3d(0, 0, 0);
+  flex-shrink: 0;
+  color: currentColor;
 `;
 
 const Path = styled.path`
@@ -19,8 +21,8 @@ export const Icon = ({ icon, block = false, ...props }: IconProps) => {
   return (
     <Svg
       viewBox="0 0 1024 1024"
-      width="20px"
-      height="20px"
+      width="1em"
+      height="1em"
       block={block}
       {...props}
     >

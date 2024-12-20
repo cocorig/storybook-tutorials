@@ -1,15 +1,12 @@
 import React from "react";
 import { Meta, StoryObj } from "@storybook/react";
 import { Avatar } from ".";
+
 const meta = {
   title: "Components/Avatar",
   component: Avatar,
   parameters: {
     layout: "centered",
-    /*
-     * More on Storybook parameters at:
-     * https://storybook.js.org/docs/react/writing-stories/parameters#component-parameters
-     */
     componentSubtitle:
       "Displays an image that represents a user or organization",
   },

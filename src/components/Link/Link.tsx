@@ -9,10 +9,8 @@ type LinkProps = {
   tertiary?: boolean;
   nochrome?: boolean;
   inverse?: boolean;
-  isButton?: boolean;
   withArrow?: boolean;
-} & React.AnchorHTMLAttributes<HTMLAnchorElement> &
-  React.ButtonHTMLAttributes<HTMLButtonElement>;
+} & React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
 const baseLinkStyles = css`
   display: inline-block;
@@ -100,15 +98,6 @@ const dynamicLinkStyles = (props: LinkProps) => css`
       color: ${color.light};
     }
   `}
-
-  ${props.isButton &&
-  css`
-    border: 0;
-    border-radius: 0;
-    background: none;
-    padding: 0;
-    font-size: inherit;
-  `}
 `;
 
 const StyledLink = styled.a<LinkProps>`
@@ -116,23 +105,11 @@ const StyledLink = styled.a<LinkProps>`
   ${(props) => dynamicLinkStyles(props)};
 `;
 
-const StyledButton = styled.button<LinkProps>`
-  ${baseLinkStyles};
-  ${(props) => dynamicLinkStyles(props)};
-`;
-
-export const Link: React.FC<LinkProps> = ({
-  isButton = false,
-  withArrow = false,
-  children,
-  ...props
-}) => {
-  const Component = isButton ? StyledButton : StyledLink;
-
+export const Link = ({ withArrow = false, children, ...props }: LinkProps) => {
   return (
-    <Component {...props}>
+    <StyledLink {...props}>
       {children}
       {withArrow && <Icon icon="arrowright" />}
-    </Component>
+    </StyledLink>
   );
 };

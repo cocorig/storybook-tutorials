@@ -1,9 +1,9 @@
-import React, { forwardRef, ReactNode } from "react";
+import React, { ButtonHTMLAttributes, forwardRef, ReactNode } from "react";
 import styled from "@emotion/styled";
 import { css } from "@emotion/react";
 import { color, typography, easing, Color, Sizes } from "../../shared";
 
-interface ButtonProps {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
   isLoading?: boolean;
   size?: Sizes;
@@ -332,7 +332,6 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
     if (ButtonWrapper) {
       return (
         <StyledButton
-          as={ButtonWrapper}
           disabled={isDisabled}
           isLoading={isLoading}
           {...props}
