@@ -4,7 +4,7 @@
 	<img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white">
 </div>
 
-[공식 튜토리얼 문서](https://storybook.js.org/tutorials/)을 학습하고 정리한 글입니다 :)
+[스토리북 튜토리얼](https://storybook.js.org/tutorials/)을 학습하고 정리한 글입니다 :)
 
 ---
 
