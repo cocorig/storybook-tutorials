@@ -2,13 +2,11 @@
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
-    "@reduxjs/toolkit": "^2.5.0",
     "@storybook/addon-a11y": "^8.4.7",
     "@testing-library/react": "^16.1.0",
     "msw-storybook-addon": "^2.0.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "react-redux": "^9.2.0",
     "typescript": "^5.7.2"
   },
   "devDependencies": {
@@ -36,7 +34,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
     "test-storybook": "test-storybook",
-    "test": "jest"
+    "test": "jest",
+    "build-storybook-docs": "build-storybook  --docs",
+    "cypress": "cypress open"
   },
   "msw": {
     "workerDirectory": [

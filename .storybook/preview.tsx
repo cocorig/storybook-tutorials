@@ -1,15 +1,8 @@
 import React from "react";
 import type { Preview } from "@storybook/react";
-// import '../src/index.css';
 import GlobalStyle from "../src/shared/global";
-import { worker } from "../src/mocks/browser";
-import { withThemeFromJSXProvider } from "@storybook/addon-themes";
-
-// Registers the msw addon
-import { initialize, mswDecorator, mswLoader } from "msw-storybook-addon";
+import { initialize, mswLoader } from "msw-storybook-addon";
 import { handlers } from "../src/mocks/handlers";
-import { http, HttpResponse } from "msw";
-import { data } from "../src/mocks/data";
 
 // Initialize MSW
 initialize({ onUnhandledRequest: "bypass" }, handlers);
@@ -30,11 +23,8 @@ const preview: Preview = {
       },
       expanded: true,
     },
-    // Storybook a11y addon configuration
     a11y: {
-      // the target DOM element
       element: "#root",
-      // sets the execution mode for the addon
       manual: false,
     },
   },

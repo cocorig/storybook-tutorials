@@ -1,23 +1,16 @@
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { AppDispatch, fetchTasks, RootState } from '../../lib/store';
-import { TaskList } from '../TaskList';
+import { TasksProvider, useTasks } from "../../hook/useTasks";
+import { TaskList } from "../TaskList";
 
-export const InboxScreen = () => {
-  const dispatch: AppDispatch = useDispatch();
-  const { error } = useSelector((state: RootState) => state.taskbox);
-
-  useEffect(() => {
-    dispatch(fetchTasks());
-  }, []);
-
+type InboxScreen = {
+  error?: string;
+};
+export const InboxScreen = ({ error }: InboxScreen) => {
   if (error) {
     return (
       <div className="page lists-show">
         <div className="wrapper-message">
-          <span className="icon-face-sad" />
-          <p className="title-message">Oh no!</p>
-          <p className="subtitle-message">Something went wrong</p>
+          <div className="title-message">Oh no!</div>
+          <div className="subtitle-message">Something went wrong.</div>
         </div>
       </div>
     );
