@@ -1,30 +1,16 @@
-import React, { memo } from 'react';
-import { Task } from '../Task/Task';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState, updateTaskState } from '../../lib/store';
+import "../Task/index.css";
+import { useTasks } from "../../hook/useTasks";
+import { ActionType, Task, TaskType } from "../Task/Task";
 
-export const TaskList = () => {
-  const tasks = useSelector((state: RootState) => {
-    const tasksInOrder = [
-      ...state.taskbox.tasks.filter((t) => t.state === 'TASK_PINNED'),
-      ...state.taskbox.tasks.filter((t) => t.state !== 'TASK_PINNED'),
-    ];
-    const filteredTasks = tasksInOrder.filter(
-      (t) => t.state === 'TASK_INBOX' || t.state === 'TASK_PINNED',
-    );
-    return filteredTasks;
-  });
-  console.log(tasks);
-  const { status } = useSelector((state: RootState) => state.taskbox);
+export type TaskListProps = {
+  loading?: boolean;
+  tasks: TaskType[];
+} & ActionType;
 
-  const dispatch = useDispatch();
+export const TaskList = ({ ...props }) => {
+  const { tasks, error, loading, archiveTask, togglePinTask, deleteTask } =
+    useTasks();
 
-  const pinTask = (value: string) => {
-    dispatch(updateTaskState({ id: value, newTaskState: 'TASK_PINNED' }));
-  };
-  const archiveTask = (value: string) => {
-    dispatch(updateTaskState({ id: value, newTaskState: 'TASK_ARCHIVED' }));
-  };
   const LoadingRow = (
     <div className="loading-item">
       <span className="glow-checkbox" />
@@ -33,9 +19,10 @@ export const TaskList = () => {
       </span>
     </div>
   );
-  if (status === 'loading') {
+
+  if (loading) {
     return (
-      <div className="list-items" data-testid="loading" key={'loading'}>
+      <div className="list-items" data-testid="loading" key={"loading"}>
         {LoadingRow}
         {LoadingRow}
         {LoadingRow}
@@ -45,9 +32,21 @@ export const TaskList = () => {
       </div>
     );
   }
+
+  if (error) {
+    return (
+      <div className="page lists-show">
+        <div className="wrapper-message">
+          <div className="title-message">Oh no!</div>
+          <div className="subtitle-message">Something went wrong.</div>
+        </div>
+      </div>
+    );
+  }
+
   if (tasks.length === 0) {
     return (
-      <div className="list-items" key={'empty'} data-testid="empty">
+      <div className="list-items" key={"empty"} data-testid="empty">
         <div className="wrapper-message">
           <span className="icon-check" />
           <p className="title-message">You have no tasks</p>
@@ -57,16 +56,27 @@ export const TaskList = () => {
     );
   }
 
+  const tasksInOrder = [
+    ...tasks.filter((t) => t.state === "TASK_PINNED"),
+    ...tasks.filter((t) => t.state !== "TASK_PINNED"),
+  ];
+
   return (
-    <div className="list-items" data-testid="success" key={'success'}>
-      {tasks.map((task) => (
+    <ul
+      className="list-items"
+      data-testid="success"
+      key={"success"}
+      aria-label="tasks"
+    >
+      {tasksInOrder.map((task) => (
         <Task
           key={task.id}
           task={task}
-          onPinTask={(task) => pinTask(task)}
-          onArchiveTask={(task) => archiveTask(task)}
+          onArchiveTask={archiveTask}
+          onDeleteTask={deleteTask}
+          onTogglePinTask={togglePinTask}
         />
       ))}
-    </div>
+    </ul>
   );
 };

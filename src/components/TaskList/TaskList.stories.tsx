@@ -1,86 +1,75 @@
-import { Meta, StoryObj } from '@storybook/react';
-import * as TaskStories from '../Task/Task.stories';
-import { actionsData } from '../../utils/actionData';
-import { TaskList } from './TaskList';
-import { Provider } from 'react-redux';
+import { Meta, StoryObj } from "@storybook/react";
+import Task, { Default as TaskDefault } from "../Task/Task.stories";
 
-import { configureStore, createSlice } from '@reduxjs/toolkit';
-import React from 'react';
+import React, { ReactNode } from "react";
+import { TasksContext, TasksContextType } from "../../hook/useTasks";
+import { TaskList } from "./TaskList";
+import { TaskType } from "../Task/Task";
 
-export const MockedState = {
+export const mockedState: TasksContextType = {
   tasks: [
-    { ...TaskStories.Default.args.task, id: '1', title: 'Task 1' },
-    { ...TaskStories.Default.args.task, id: '2', title: 'Task 2' },
-    { ...TaskStories.Default.args.task, id: '3', title: 'Task 3' },
-    { ...TaskStories.Default.args.task, id: '4', title: 'Task 4' },
-    { ...TaskStories.Default.args.task, id: '5', title: 'Task 5' },
-    { ...TaskStories.Default.args.task, id: '6', title: 'Task 6' },
+    { id: "1", state: "TASK_INBOX", title: "Build a date picker" },
+    { id: "2", state: "TASK_INBOX", title: "QA dropdown" },
+    {
+      id: "3",
+      state: "TASK_INBOX",
+      title: "Write a schema for account avatar component",
+    },
+    { id: "4", state: "TASK_INBOX", title: "Export logo" },
+    { id: "5", state: "TASK_INBOX", title: "Fix bug in input error state" },
+    {
+      id: "6",
+      state: "TASK_INBOX",
+      title: "Draft monthly blog to customers",
+    },
   ],
-  status: 'idle',
   error: null,
+  loading: false,
+  dispatch: () => {},
 };
-// redux store
-const Mockstore = ({ taskboxState, children }) => (
-  <Provider
-    store={configureStore({
-      reducer: {
-        taskbox: createSlice({
-          name: 'taskbox',
-          initialState: taskboxState,
-          reducers: {
-            updateTaskState: (state, action) => {
-              const { id, newTaskState } = action.payload;
-              const task = state.tasks.findIndex((task) => task.id === id);
-              if (task >= 0) {
-                state.tasks[task].state = newTaskState;
-              }
-            },
-          },
-        }).reducer,
-      },
-    })}
-  >
+type MockStoreProps = {
+  mockedState: TasksContextType;
+  children: ReactNode;
+};
+const Mockstore = ({ mockedState, children }: MockStoreProps) => (
+  <TasksContext.Provider value={{ ...mockedState }}>
     {children}
-  </Provider>
+  </TasksContext.Provider>
 );
 
 const meta = {
-  title: 'Components/TaskList',
+  title: "Components/TaskList",
   component: TaskList,
-
-  parameters: {
-    layout: 'centered',
+  args: {
+    ...Task.args,
   },
-  tags: ['autodocs'],
-  args: actionsData,
-  // https://storybook.js.org/docs/api/csf
-  excludeStories: /.*MockedState$/,
+  decorators: [
+    (story) => <Mockstore mockedState={mockedState}>{story()}</Mockstore>,
+  ],
+
+  excludeStories: /.*mockedState$/,
 } satisfies Meta<typeof TaskList>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
+export const Default: Story = {};
 /**
- * Default
+ * WithPinnedTasks
  */
-export const Default: Story = {
-  decorators: [
-    (story) => <Mockstore taskboxState={MockedState}>{story()}</Mockstore>,
-  ],
-};
-
-export const WithPinnedTasks = {
+export const WithPinnedTasks: Story = {
   decorators: [
     (story) => {
-      const pinnedtasks = [
-        ...MockedState.tasks.slice(0, 5),
-        { id: '6', title: 'Task 6 (pinned)', state: 'TASK_PINNED' },
+      const pinnedTasks: TaskType[] = [
+        ...mockedState.tasks.slice(0, 5),
+        { id: "6", title: "Task 6 (pinned)", state: "TASK_PINNED" },
       ];
+
       return (
         <Mockstore
-          taskboxState={{
-            ...MockedState,
-            tasks: pinnedtasks,
+          mockedState={{
+            ...mockedState,
+            tasks: pinnedTasks,
           }}
         >
           {story()}
@@ -90,13 +79,16 @@ export const WithPinnedTasks = {
   ],
 };
 
-export const Loading = {
+/**
+ * Loading
+ */
+export const Loading: Story = {
   decorators: [
     (story) => (
       <Mockstore
-        taskboxState={{
-          ...MockedState,
-          status: 'loading',
+        mockedState={{
+          ...mockedState,
+          loading: true,
         }}
       >
         {story()}
@@ -104,13 +96,15 @@ export const Loading = {
     ),
   ],
 };
-
-export const Empty = {
+/**
+ * Empty
+ */
+export const Empty: Story = {
   decorators: [
     (story) => (
       <Mockstore
-        taskboxState={{
-          ...MockedState,
+        mockedState={{
+          ...mockedState,
           tasks: [],
         }}
       >

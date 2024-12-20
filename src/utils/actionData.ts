@@ -1,6 +1,7 @@
 import { fn } from "@storybook/test";
 
 export const actionsData = {
+  onTogglePinTask: fn(),
   onArchiveTask: fn(),
-  onPinTask: fn(),
+  onDeleteTask: fn(),
 };
