@@ -1,5 +1,13 @@
 # Storybook Tutorials
 
+<div>
+	<img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white">
+</div>
+
+[공식 튜토리얼 문서](https://storybook.js.org/tutorials/)을 학습하고 정리한 글입니다 :)
+
+---
+
 <details><summary> storybook 8.0 변경된 패키지
 </summary>
 
