@@ -9,6 +9,7 @@
     "skipLibCheck": true,
     "types": [
       "react",
+      "cypress",
       "@emotion/react/types/css-prop",
       "@testing-library/jest-dom"
     ],
@@ -27,6 +28,6 @@
     "isolatedModules": true,
     "jsx": "react-jsx"
   },
-  "include": ["src"],
+  "include": ["src", "**/*.ts"],
   "exclude": ["**/*.stories.tsx", "node_modules"]
 }
