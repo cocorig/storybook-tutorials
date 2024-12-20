@@ -4,17 +4,18 @@
 </summary>
 
 - 제거
-  @storybook/addons 👉 `@storybook/manager-api` or `@storyboook/preview-api`
-  @storybook/channel-postmessage 👉 `@storybook/channels`
-  @storybook/channel-websocket 👉 `@storybook/channels`
-  @storybook/client-api 👉 `@storybook/preview-api`
-  @storybook/core-client 👉 `@storybook/preview-api`
-  @storybook/preview-web 👉 `@storybook/preview-api`
-  @storybook/store 👉 `@storybook/preview-api`
-  @storybook/api 👉 `@storybook/manager-api`
+
+  - @storybook/addons 👉 `@storybook/manager-api` or `@storyboook/preview-api`;
+  - @storybook/channel-postmessage 👉 `@storybook/channels`
+  - @storybook/channel-websocket 👉 `@storybook/channels`
+  - @storybook/client-api 👉 `@storybook/preview-api`
+  - @storybook/core-client 👉 `@storybook/preview-api`
+  - @storybook/preview-web 👉 `@storybook/preview-api`
+  - @storybook/store 👉 `@storybook/preview-api`
+  - @storybook/api 👉 `@storybook/manager-api`
 
 - 기존 testing-library를 새로운 패키지로 통합
-  @storybook/testing-library 👉 `@storybook/test`
+- @storybook/testing-library 👉 `@storybook/test`
 
 </details>
 
@@ -22,11 +23,13 @@
 
 🔗 [migration notes](https://github.com/storybookjs/storybook/blob/next/MIGRATION.md#deprecated-storybooktesting-library-package)
 
+<br>
+
 ## 1. Storybook for React tutorial
 
 ### Set up React Storybook
 
-🔗 [스토리북 공식문서](<[text](https://storybook.js.org/docs)>)
+🔗 [스토리북 공식문서](https://storybook.js.org/docs) <br>
 🔗 [스토리북 설정](https://storybook.js.org/docs/get-started/setup)
 
 - 설치
@@ -41,9 +44,11 @@ npx storybook@latest init
 npm run storybook
 ```
 
+<br>
+
 ### 기본 템플릿 예제
 
-🔗 [How to write stories](https://storybook.js.org/docs/writing-stories)
+🔗 [How to write stories](https://storybook.js.org/docs/writing-stories) <br>
 🔗 [spreadable-story-objects](https://storybook.js.org/docs/api/csf#spreadable-story-objects)
 
 ```tsx
@@ -71,6 +76,8 @@ export const FirstStory: Story = {
 ```
 
 🔗 [Meta, StoryObk](https://storybook.js.org/docs/writing-stories/typescript#typing-stories-with-meta-and-storyobj)
+
+<br>
 
 ### Typing custom args
 
@@ -104,6 +111,8 @@ export const CustomFooter: Story = {
 };
 ```
 
+<br>
+
 ### Build a simple component
 
 #### includeStories , excludeStories
@@ -118,15 +127,17 @@ const meta: Meta<typeof MyComponent> = {
 
 #### 포함
 
-includeStories: `/^[A-Z]/` 대문자로 시작하는 스토리만 포함
-includeStories: `/.\*Story$/` Story로 끝나는 스토리만 포함
-includeStories: `['SimpleStory', 'ComplexStory']` 틋정 이름으로 포함
+includeStories: `/^[A-Z]/` 대문자로 시작하는 스토리만 포함 <br>
+includeStories: `/.\*Story$/` Story로 끝나는 스토리만 포함 <br>
+includeStories: `['SimpleStory', 'ComplexStory']` 틋정 이름으로 포함 <br>
 
 #### 제외
 
-excludeStories: `/^[a-z]/` 소문자로 시작하는 스토리 제외
-excludeStories: `/.\*Data$/` Data로 끝나는 스토리를 제외
-excludeStories: `['simpleData', 'complexData']` 특정이름으로 제외
+excludeStories: `/^[a-z]/` 소문자로 시작하는 스토리 제외 <br>
+excludeStories: `/.\*Data$/` Data로 끝나는 스토리를 제외 <br>
+excludeStories: `['simpleData', 'complexData']` 특정이름으로 제외 <br>
+
+<br>
 
 ### 접근성 설정
 
@@ -166,6 +177,8 @@ const config: StorybookConfig = {
 export default config;
 ```
 
+<br>
+
 ### Assemble a composite component
 
 🔗 [Decorators](https://storybook.js.org/docs/writing-stories/decorators)
@@ -201,11 +214,16 @@ export default {
 };
 ```
 
+<br>
+
 ### Component tests
 
 #### play 함수 사용하여 테스트
 
-🔗 [play 함수 사용](https://storybook.js.org/docs/writing-stories/play-function)
+<br>
+
+🔗 [play 함수 사용](https://storybook.js.org/docs/writing-stories/play-function) <br>
+
 작업이 업데이트될 때 UI에 무슨 일이 일어나는지 확인하는 데 도움을 준다.
 
 ```bash
@@ -216,9 +234,11 @@ npm install @storybook/test @storybook/addon-interactions --save-dev
 
 🔗 [testing-library 문서](https://testing-library.com/docs/queries/about/)
 
+<br>
+
 #### test-runner 사용하여 테스트
 
-- [test-runner](https://storybook.js.org/docs/writing-tests/test-runner)
+🔗 [test-runner](https://storybook.js.org/docs/writing-tests/test-runner)
 
 모든 스토리를 실행 가능한 테스트로 전환한다.
 
@@ -244,6 +264,8 @@ npm install @storybook/test-runner --save-dev
 npm run test-storybook
 ```
 
+<br>
+
 ### 애드온
 
 #### 컨트롤
@@ -251,6 +273,8 @@ npm run test-storybook
 컴포넌트의 props를 동적으로 바꿔가면서 편집할 수 있다.
 
 <img width="560" alt="스토리북 애드온 예제사진" src="https://github.com/user-attachments/assets/f047698a-a5e3-494b-ba7f-ae989e3a5183" />
+
+<br>
 
 ```tsx
 const meta = {
@@ -286,6 +310,8 @@ const meta = {
 
 🔗 [controls](https://storybook.js.org/docs/essentials/controls#annotation)
 
+<br>
+
 ### 스토리북 문서 테마 변경
 
 🔗 [theming](https://storybook.js.org/docs/configure/user-interface/theming#create-a-theme-quickstart)
@@ -295,6 +321,9 @@ npm install --save-dev @storybook/manager-api @storybook/theming
 ```
 
 `.storybook / manager.ts` 생성 후 theme 설정
+
+<br>
+<br>
 
 ## 2. Design Systems for Developers
 
@@ -335,9 +364,13 @@ const preview: Preview = {
 export default preview;
 ```
 
+<br>
+
 ### 폰트 태그 추가
 
 스토리북에서 설정하는 쉬운 방법으로 `.storybook/preview-head-html` 파일을 생성해 직접 link 태그를 추가하는 방법이다.
+
+<br>
 
 ### 애드온 인터렉션 (interaction)
 
@@ -349,9 +382,11 @@ npm install @storybook/test @storybook/addon-interactions --save-dev
 
 play 함수는 스토리가 렌더링을 마치면 실행되는 된다.
 
-🔗 [play-function](https://storybook.js.org/docs/writing-stories/play-function)
-🔗 [API for user-events](https://storybook.js.org/docs/writing-tests/component-testing#api-for-user-events)
-🔗 [official user-event docs](https://testing-library.com/docs/user-event/utility/)
+🔗 [play-function](https://storybook.js.org/docs/writing-stories/play-function) <br>
+🔗 [API for user-events](https://storybook.js.org/docs/writing-tests/component-testing#api-for-user-events) <br>
+🔗 [official user-event docs](https://testing-library.com/docs/user-event/utility/) <br>
+
+<br>
 
 ### 단위 테스트
 
@@ -364,6 +399,8 @@ play 함수는 스토리가 렌더링을 마치면 실행되는 된다.
 ```bash
  npm i @testing-library/react
 ```
+
+<br>
 
 ### MDX를 사용해 개별 페이지 설정
 
@@ -388,27 +425,32 @@ const config: StorybookConfig = {
 export default config;
 ```
 
+<br>
+<br>
+
 ## 3. UI Testing Handbook
 
 ### UI에서 테스트 가능한 요소
 
-- `시각적 요소`
+- `시각적 요소` <br>
   컴포넌트가 props 및 상태에 대해 올바르게 렌더링 되는지 확인한다.
   모든 컴포넌트의 스크린샷을 찍은 뒤 commit 단위에서 이전과 변경사항을 비교해 식별한다.
-- `구성 요소`
+- `구성 요소` <br>
   컴포넌트들의 데이터 흐름을 확인한다.
 
-- `상호작용`
+- `상호작용` <br>
   이벤트가 의도한 대로 처리되는지 검증하는 작업한다.
   컴포넌트를 분리해 렌더링 한 다음, 클릭이나, 사용자 동작을 시뮬레이션한다.
   마지막으로 상태가 올바르게 업데이트되었는지 확인한다.
 
-- `접근성`
+- `접근성` <br>
   접근성 테스트는 시각장애, 청각장애 등 다양한 장애와 관련된 사용성을 확인한다.
   접근성에 위반하는 요소를 확인해 해결할 수 있다.
 
-- `사용자 흐름`
+- `사용자 흐름` <br>
   사용자가 여러 컴포넌트에 걸쳐 일련의 단계를 완료해야 할 때 Cypress 및 Playwright와 같은 도구를 사용하면 전체 애플리케이션에 대해 테스트를 실행하여 이러한 상호작용을 확인할 수 있다.
+
+<br>
 
 ### WorkFlow
 
@@ -423,9 +465,13 @@ export default config;
 
 🔗 [ui-testing-guide-code](https://github.com/chromaui/ui-testing-guide-code/tree/main/.storybook)
 
+<br>
+
 ### Visual testing in Storybook
 
 실제 브라우저에서 스토리(story)의 이미지 스냅샷을 캡처하고 비교하여 버그를 포착해 UI의 변경 사항을 파악한다.
+
+<br>
 
 #### workflow
 
@@ -435,6 +481,8 @@ export default config;
 4. UI 버그를 자동으로 캡쳐 : 각 테스트 케이스를 스냅샷을 캡쳐한 뒤 이전과 비교하며 확인
 
 (데이터, 백엔드, API)에서 UI를 분리하여 각 state를 개별적으로 확인할 수 있다.
+
+<br>
 
 #### 테스트 케이스 작성
 
@@ -502,6 +550,8 @@ export const LongTitle: Story = {
 
 <img width="602"  src="https://github.com/user-attachments/assets/c13b0a7f-7f27-4aca-83b0-78df9a843712" />
 
+<br>
+
 ### Actions addon
 
 ```ts
@@ -520,7 +570,7 @@ Actions args를 줄여서 스토리에서 args로 제공한다.
 
 이 args를 얻는 방법 중 `@storybook/test`에서 fn 함수 이용할 수 있는데`fn()`은 컴포넌트의 이벤트 핸들러가 사용자의 상호작용 또는 play 함수로 인해 호출될 때 해당 핸들러가 올바른 인수를 받았는지 Storybook UI의 작업 패널에서 확인할 수 있다.
 
-🔗 [Actions](https://storybook.js.org/docs/essentials/actions)
+🔗 [Actions](https://storybook.js.org/docs/essentials/actions) <br>
 🔗 [UI 버그를 자동으로 찾아내는 방법 알아보기](https://storybook.js.org/tutorials/ui-testing-handbook/react/ko/visual-testing/)
 
 - 그다음 해야 할 것
@@ -529,6 +579,8 @@ Actions args를 줄여서 스토리에서 args로 제공한다.
   - 테스트 실행하기
 
 이렇게 테스트하면 하나의 버그가 여러 개의 버그로 늘어나는 것을 방지할 수 있다.
+
+<br>
 
 ### Testing composite components
 
@@ -658,6 +710,8 @@ export const Empty: Story = {
 };
 ```
 
+<br>
+
 ### 상태를 가지는 (Stateful) 복합 컴포넌트
 
 스토리북 애드온을 사용해 컨텍스트, 프로바이더(provider) 및 컴포넌트가 의존하는 모든 것을 모의할 수 있다.
@@ -694,13 +748,17 @@ const preview = {
 export default preview;
 ```
 
+<br>
+
 ### request handlers 작성
 
 `/tasks`와 같은 요청을 모의해야 한다면 preview 파일에서 MSW 핸들러를 설정해야 한다.
 
 msw-storybook-addon으로 MSW를 시작하는데 `initialize` 함수는 MSW의 옵션을 설정하고 Storybook에서 사용할 초기 핸들러를 등록한다.
 
-`initialize(options?: InitializeOptions, initialHandlers?: RequestHandler[]): SetupWorker`
+```
+initialize(options?: InitializeOptions, initialHandlers?: RequestHandler[]): SetupWorker
+```
 
 ```tsx
 import { handlers } from "../src/mocks/handlers";
@@ -851,6 +909,8 @@ export const DeleteTask = {
 
 🔗 [Play function](https://storybook.js.org/docs/writing-stories/play-function)
 
+<br>
+
 ### User Flow 테스트하기
 
 전체적인 흐름을 검증하고 문제를 파악하려면 E2E(End-to-End) UI 테스트가 필요하다.
@@ -860,6 +920,8 @@ export const DeleteTask = {
 1. 설정: 앱을 실행하고 모의 네트워크를 요청
 2. 실행 : Cypress를 사용해 페이지를 방문하고 상호 작용을 시뮬레이션
 3. 명령(선언)을 실행 : UI가 올바르게 업데이트되었는지 확인
+
+<br>
 
 ### Cypress 설정
 
@@ -903,6 +965,8 @@ export default defineConfig({
 ```
 
 🔗 [cypress-docs](https://docs.cypress.io)
+
+<br>
 
 ### 인증 플로우 테스트하기
 
@@ -1003,6 +1067,9 @@ CI(Continuous Integration) 서버를 사용하여 매 코드가 push될 때마�
 
 ### [테스팅 작업 흐름(workflow)](https://storybook.js.org/tutorials/ui-testing-handbook/react/ko/workflow/)
 
+<br>
+<br>
+
 ## 4. Visual Testing Handbook
 
 ui를 별도로 빌드 하는 이유?
@@ -1010,13 +1077,19 @@ ui를 별도로 빌드 하는 이유?
 - 컴포넌트와 상태가 많아질수록, 컴포넌트가 올바르게 렌더링 되는지 확인하는 게 점점 어려워진다.
   각 컴포넌트의 상태에 독립적으로 집중해 각각 variation을 개별적으로 테스트할 수 있고, mocking을 통해 복잡한 케이스들을 재현할 수 있다.
 
+<br>
+
 ### 컴포넌트 설계를 위한 테스트 주도(test-driven) 작업 흐름(workflow)
+
+<br>
 
 #### Test-driven development
 
 주요 핵심 개념은 테스트 중인 기능을 개발하기 전에 테스트를 작성하는 것이다.
 테스트 주도 방법론(TDD)를 통해 사용자는 정확한 입력값의 측면에서 어떤 코드가 필요한지 명확하게 파악할 수 있게 된다.
 하지만, UI 개발을 할 때는 TDD와 잘 맞진 않는다. 테스트를 미리 정의하기 어렵고, 모듈을 분리하기 어렵기 때문이다. 이러한 단점은 컴포넌트를 개별적으로 분리해 시각적 테스트를 함으로써 해결할 수 있다.
+
+<br>
 
 ### 시각적 테스트의 작업 흐름(workflow)
 
@@ -1033,6 +1106,8 @@ end
 이것을 스토리북 용어로 `story`라고 한다.
 컴포넌트를 변화시키는 코드를 작성하는 것 또한 미리 입력값을 작성하고 시각적으로 출력값을 확인하기만 하면 되므로, 자연스럽게 테스트 주도 방법론 식으로 ui를 설계할 수 있다.
 
+<br>
+
 ### 시각적 테스트 주도(test-driven) 개발 배워보기
 
 1. `시각적 테스트 케이스 구축`
@@ -1044,6 +1119,8 @@ end
 4. `디자인에 대한 구현 검토`
    컴포넌트가 스토리북에서 어떻게 보이는지 검토
 5. `반복`
+
+<br>
 
 ### [How to test UIs with Storybook](https://storybook.js.org/docs/writing-tests)
 
